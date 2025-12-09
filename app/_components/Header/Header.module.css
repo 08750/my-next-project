@@ -5,6 +5,9 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  display: flex; /* ← 追加 */
+  align-items: center; /* ← 追加 */
+  justify-content: space-between; /* ← 左右に配置 */
 }
 
 .logoLink {
@@ -14,12 +17,6 @@
 .logo {
   height: 24px;
   width: auto;
-}
-
-.items {
-  display: flex;
-  color: fff;
-  gap: 40px;
 }
 
 @media (max-width: 640px) {
