@@ -5,6 +5,7 @@ import type {
   MicroCMSImage,
   MicroCMSListContent,
 } from "microcms-js-sdk";
+import { queries } from "storybook/test";
 
 export type Member = {
   name: string;
@@ -52,4 +53,29 @@ export const getNewsList = async (queries?: MicroCMSQueries) => {
     queries,
   });
   return listData;
+};
+
+// export const getNewsDetail = async()
+//   contentID:string,
+//   queries?:MicroCMSQueries
+// ) =>{
+//   const datailData = await client.getListDetail<News>({
+//     endpoint:"nwes",
+//     contentId,
+//     queries,
+//   });
+//   return detailData;
+// }
+
+export const getNewsDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries
+) => {
+  const detailData = await client.getListDetail<News>({
+    endpoint: "news",
+    contentId,
+    queries,
+  });
+
+  return detailData;
 };
