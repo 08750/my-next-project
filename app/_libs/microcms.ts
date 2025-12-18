@@ -5,6 +5,7 @@ import type {
   MicroCMSImage,
   MicroCMSListContent,
 } from "microcms-js-sdk";
+import { revalidate } from "../news/page";
 
 export type Member = {
   name: string;
@@ -39,22 +40,20 @@ const client = createClient({
 });
 
 export const getMemberList = async (queries?: MicroCMSQueries) => {
-  const listData = await client
-    .getList<Member>({
-      endpoint: "members",
-      queries,
-    });
+  const listData = await client.getList<Member>({
+    endpoint: "members",
+    queries,
+  });
   return listData;
-}
+};
 
 export const getNewsList = async (queries?: MicroCMSQueries) => {
-  const listData = await client
-    .getList<News>({
-      endpoint: "news",
-      queries,
-    });
+  const listData = await client.getList<News>({
+    endpoint: "news",
+    queries,
+  });
   return listData;
-}
+};
 
 export const getNewsDetail = async (
   contentId: string,
@@ -64,9 +63,14 @@ export const getNewsDetail = async (
     endpoint: "news",
     contentId,
     queries,
+    customRequestInit: {
+      next: {
+        revalidate: queries?.draftKey === undefined ? 60 : 0,
+      },
+    },
   });
   return detailData;
-}
+};
 
 export const getCateoryDetail = async (
   contentId: string,
@@ -78,4 +82,4 @@ export const getCateoryDetail = async (
     queries,
   });
   return detailData;
-}
+};
