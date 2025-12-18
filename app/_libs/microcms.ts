@@ -5,7 +5,6 @@ import type {
   MicroCMSImage,
   MicroCMSListContent,
 } from "microcms-js-sdk";
-import { revalidate } from "../news/page";
 
 export type Member = {
   name: string;
