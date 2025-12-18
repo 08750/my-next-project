@@ -2,7 +2,7 @@
 
 import { createContactData } from "@/app/_actions/contact";
 import { useFormState } from "react-dom";
-import styles from "./index.module.css";
+import styles from "./ContactForm.module.css";
 
 const initialState = {
   status: "",
